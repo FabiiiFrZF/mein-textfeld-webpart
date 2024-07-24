@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Textfeld hinzufügen und bearbeiten</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .edit-mode {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="addButton">Hinzufügen</button>
+    <div id="textContainer" class="hidden">
+        <textarea id="textField"></textarea>
+        <button id="saveButton">Speichern</button>
+        <button id="editButton" class="hidden">Bearbeiten</button>
+        <button id="deleteButton" class="hidden">Löschen</button>
+    </div>
+
+    <script>
+        document.getElementById('addButton').addEventListener('click', function() {
+            document.getElementById('textContainer').classList.remove('hidden');
+            document.getElementById('addButton').classList.add('hidden');
+            document.getElementById('textField').value = '';
+            document.getElementById('saveButton').classList.remove('hidden');
+            document.getElementById('editButton').classList.add('hidden');
+            document.getElementById('deleteButton').classList.add('hidden');
+        });
+
+        document.getElementById('saveButton').addEventListener('click', function() {
+            document.getElementById('textContainer').classList.remove('hidden');
+            document.getElementById('addButton').classList.remove('hidden');
+            document.getElementById('saveButton').classList.add('hidden');
+            document.getElementById('editButton').classList.remove('hidden');
+            document.getElementById('deleteButton').classList.remove('hidden');
+        });
+
+        document.getElementById('editButton').addEventListener('click', function() {
+            document.getElementById('textField').classList.add('edit-mode');
+            document.getElementById('saveButton').classList.remove('hidden');
+            document.getElementById('editButton').classList.add('hidden');
+        });
+
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            document.getElementById('textContainer').classList.add('hidden');
+            document.getElementById('addButton').classList.remove('hidden');
+            document.getElementById('textField').value = '';
+        });
+    </script>
+</body>
+</html>
